@@ -2,18 +2,18 @@ import CountdownTimer from './timer.js'
 
 const timer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jul 17, 2019'),
+  targetDate: new Date('Jan 5, 2021'),
 });
 
 const timerId = setInterval(() => {
   const dateNow = new Date().getTime()
-  const timeRange = dateNow - timer.targetDate
+  const timeRange = timer.targetDate - dateNow
 
   if(timeRange > 0) {
     timer.update()
   }
   else {
-    clearInterval(timerId)
+    timer.expired(timerId)
   }
 
 }, 1000);

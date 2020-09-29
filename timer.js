@@ -1,14 +1,14 @@
 export default class CountdownTimer {
     constructor(obj) {
-        this.selector = obj.selector
         this.targetDate = obj.targetDate.getTime()
+        this.selector = document.querySelector(obj.selector);
     }
 
     update() {
         //  init
         const now = new Date().getTime()
-        const time = new Date(now - this.targetDate)
-        const source = document.querySelector(this.selector);
+        const time = this.targetDate - now
+
 
         //count
         const days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -18,7 +18,7 @@ export default class CountdownTimer {
 
 
         //update
-        source.innerHTML = `<div class="field">
+        this.selector.innerHTML = `<div class="field">
             <span class="value" data-value="days">${days}</span>
             <span class="label">Days</span>
             </div>
@@ -37,6 +37,11 @@ export default class CountdownTimer {
                 <span class="value" data-value="secs">${secs}</span>
                 <span class="label">Secs</span>
             </div>`
+     }
+
+     expired(timerId) {
+        clearInterval(timerId)
+        this.selector.innerHTML = "timer expired"
      }
 
 
