@@ -36,8 +36,7 @@ export default class CountdownTimer {
             <div class="field">
                 <span class="value" data-value="secs">${secs}</span>
                 <span class="label">Secs</span>
-            </div>
-        </div>`
+            </div>`
      }
 
 
