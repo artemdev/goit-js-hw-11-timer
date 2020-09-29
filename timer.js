@@ -4,7 +4,7 @@ export default class CountdownTimer {
         this.targetDate = obj.targetDate.getTime()
     }
 
-     updateDate() {
+    update() {
         //  init
         const now = new Date().getTime()
         const time = new Date(now - this.targetDate)
